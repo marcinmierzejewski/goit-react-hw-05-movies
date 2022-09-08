@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = location.state?.from ?? "/movies";
   
 
   return (
@@ -14,10 +14,10 @@ export const MovieDetailsPage = () => {
       <h3>Details for {movieId}</h3>
       <ul>
         <li>
-          <Link to="cast">Cast for {movieId}</Link>
+          <Link to="cast" state={location.state}>Cast for {movieId}</Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={location.state}>Reviews</Link>
         </li>
       </ul>
       <Outlet />
