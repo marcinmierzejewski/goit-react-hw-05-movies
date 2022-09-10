@@ -1,14 +1,13 @@
-// import { getMovies } from "tryApi";
-// import { Link, useLocation } from "react-router-dom";
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { fetchMoviesByQuery } from 'api/fetchMovies';
 
 export const MoviesPage = () => {
-  // const movies = getMovies()
-  // const location = useLocation();
+  const location = useLocation();
   const [querySearch, setQuerySearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  // const name = searchParams.get("query");
+  const [searchMovieByQuery, setSearchMovieByQuery] = useState([])
 
   const querySearchValue = e => {
     setQuerySearch(e.target.value)
@@ -17,10 +16,17 @@ export const MoviesPage = () => {
   const submitQueryValue = e => {
     e.preventDefault();
     setSearchParams({ query: querySearch});
-    const searchMovie = searchParams.get('query');
-    console.log(searchMovie)
     setQuerySearch('');
   }
+
+  useEffect(() => {
+    const getMovieByQuery = async () => {
+      const searchMovie = searchParams.get('query');
+      const movieByQuery = await fetchMoviesByQuery(searchMovie);
+      setSearchMovieByQuery(movieByQuery);
+    }
+    getMovieByQuery();
+  }, [searchParams]);
 
   return (
     <div>
@@ -32,14 +38,21 @@ export const MoviesPage = () => {
         />
         <button>Search</button>
       </form>
-      
-      {/* {movies.map((movie) => (
-        <ul key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            <h4>{movie.title}</h4>
-          </Link>
+
+      <main>
+      <h2>Searching movie</h2>
+      {searchMovieByQuery.map((movie) => (
+        <ul >
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              <h4>{movie.title}</h4>
+            </Link>
+          </li>
+         
         </ul>
-     ))} */}
+     ))}
+    </main>
+
     </div>
   );
 };

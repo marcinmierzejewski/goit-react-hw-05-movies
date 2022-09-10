@@ -27,10 +27,13 @@ export const HomePage = () => {
     <main>
       <h2>Trending today</h2>
       {mostPopularMovie.map((movie) => (
-        <ul key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            <h4>{movie.title}</h4>
-          </Link>
+        <ul>
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              <h4>{movie.title}</h4>
+            </Link>
+          </li>
+         
         </ul>
      ))}
     </main>

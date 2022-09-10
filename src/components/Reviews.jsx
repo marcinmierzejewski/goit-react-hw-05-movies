@@ -17,7 +17,13 @@ export const Reviews = () => {
 
   return (
     <div>
-      <ReviewList movieReview={movieReview.results}/>
+      {movieReview.result > 0 ? (
+        <ReviewList movieReview={movieReview.results}/>
+      ) : (
+        <p>No result review</p>
+      )
+      }
+      
     </div>
   );
 };
