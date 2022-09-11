@@ -4,7 +4,7 @@ import { fetchMovieAdd } from "api/fetchMovies";
 import { CastList } from '../../components/CastList/CastList';
 
 
-export const Cast = () => {
+const Cast = () => {
   const [movieCast, setMovieCast] = useState([])
   const { movieId } = useParams();
 
@@ -23,3 +23,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast

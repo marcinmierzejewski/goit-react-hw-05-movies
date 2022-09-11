@@ -2,7 +2,7 @@ import { fetchMovies } from 'api/fetchMovies';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [mostPopularMovie, setMostPopularMovie] = useState([]);
   const location = useLocation();
 
@@ -10,7 +10,6 @@ export const HomePage = () => {
     try {
       const popularMovies = await fetchMovies();
       setMostPopularMovie(popularMovies);
-      console.log(popularMovies);
     } catch (error) {
       console.log(error);
     }
@@ -35,3 +34,5 @@ export const HomePage = () => {
     </main>
   );
 };
+
+export default HomePage

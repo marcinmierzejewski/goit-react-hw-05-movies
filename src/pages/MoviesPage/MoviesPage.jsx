@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByQuery } from 'api/fetchMovies';
 import { Input, SearchBtn } from './MoviePage.styled';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const location = useLocation();
   const [querySearch, setQuerySearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -54,3 +54,5 @@ export const MoviesPage = () => {
     </div>
   );
 };
+
+export default MoviesPage

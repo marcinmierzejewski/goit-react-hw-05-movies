@@ -6,7 +6,7 @@ import { fetchMovieById } from "api/fetchMovies";
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { AddInfo, InfoItem } from "./MovieDetailsPage.styled";
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const [movieById, setMovieById] = useState({})
   const { movieId } = useParams();
   const location = useLocation();
@@ -39,3 +39,5 @@ export const MovieDetailsPage = () => {
     </div>
   );
 };
+
+export default MovieDetailsPage

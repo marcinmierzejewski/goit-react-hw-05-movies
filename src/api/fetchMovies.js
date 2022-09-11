@@ -18,7 +18,6 @@ export const fetchMovieById = async movieId => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
     );
-    console.log(response);
     const responseData = response.data;
     return responseData;
   } catch (error) {
@@ -31,7 +30,6 @@ export const fetchMovieAdd = async (movieId, param) => {
     const response = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieId}/${param}?api_key=${API_KEY}`
     );
-    console.log(response);
     const responseData = response.data;
     return responseData;
   } catch (error) {
