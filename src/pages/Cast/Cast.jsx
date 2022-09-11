@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { fetchMovieAdd } from "api/fetchMovies";
-import { CastList } from './CastList';
+import { CastList } from '../../components/CastList/CastList';
 
 
 export const Cast = () => {
@@ -19,7 +19,7 @@ export const Cast = () => {
 
   return (
     <div>
-      <CastList movieCast={movieCast.cast}/>
+      {movieCast.cast && <CastList movieCast={movieCast.cast}/>}      
     </div>
   );
 };
